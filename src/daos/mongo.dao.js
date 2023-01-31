@@ -6,7 +6,6 @@ export class MongoDao {
   async getAll() {
     try {
       const response = await this.model.find();
-
       return response;
     } catch (err) {
       throw new Error("Error getting resources");
@@ -34,7 +33,6 @@ export class MongoDao {
   async update(id, resource) {
     try {
       const response = await this.model.findByIdAndUpdate(id, resource);
-
       return response;
     } catch (err) {
       throw new Error("Error getting resources");
@@ -44,7 +42,6 @@ export class MongoDao {
   async delete(id) {
     try {
       const response = await this.model.findByIdAndDelete(id);
-
       return response;
     } catch (err) {
       throw new Error("Error getting resources");

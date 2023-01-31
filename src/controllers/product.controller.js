@@ -25,6 +25,7 @@ const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Product.getById(id);
+    if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(response);
   } catch (err) {
     throw new Error(err);
@@ -35,6 +36,7 @@ const updateProductById = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Product.update(id, req.body);
+    if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(response);
   } catch (err) {
     throw new Error(err);
@@ -45,6 +47,7 @@ const deleteProductById = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Product.delete(id);
+    if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(response);
   } catch (err) {
     throw new Error(err);

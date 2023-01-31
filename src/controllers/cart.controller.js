@@ -25,6 +25,7 @@ const getCartById = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Cart.getById(id);
+    if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(response);
   } catch (err) {
     throw new Error(err);
@@ -35,6 +36,7 @@ const updateCartById = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Cart.update(id, req.body);
+    if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(response);
   } catch (err) {
     throw new Error(err);
@@ -45,6 +47,7 @@ const deleteCartById = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Cart.delete(id);
+    if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(response);
   } catch (err) {
     throw new Error(err);
