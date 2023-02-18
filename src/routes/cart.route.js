@@ -11,7 +11,15 @@ router
 router
   .route("/:id")
   .get(cartController.getCartById)
-  .put(cartController.updateCartById)
+  // .put(cartController.updateCartById)
   .delete(cartController.deleteCartById);
+
+router.route("/:id/productos").post(cartController.addProdToCart);
+
+router
+  .route("/:id/productos/:idProd")
+  .get(cartController.getOneProduct)
+  .delete(cartController.removeProdFromCart)
+  .put(cartController.updateProdFromCart);
 
 export const cartRouter = router;
