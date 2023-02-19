@@ -13,7 +13,15 @@ const app = express();
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
+
 app.use("/api", routes);
+
+app.use((req, res) => {
+  res.json({
+    error: -2,
+    desc: `Route ${req.path} method ${req.method} doesn't exist`,
+  });
+});
 
 mongoose.set("strictQuery", true);
 mongoose.connect(config.dbUrl).then(() => {
