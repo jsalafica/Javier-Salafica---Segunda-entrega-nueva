@@ -17,7 +17,7 @@ router
 router.route("/:id/productos").post(cartController.addProdToCart);
 
 router
-  .route("/:id/productos/:idProd")
+  .route("/:id/producto/:idProd")
   .get(cartController.getOneProduct)
   .delete(cartController.removeProdFromCart)
   .put(cartController.updateProdFromCart);
