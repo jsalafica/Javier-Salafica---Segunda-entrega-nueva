@@ -97,7 +97,7 @@ export class MongoDao {
   }
 
   async getOne(idCart, idProduct) {
-    console.log(idCart, idProduct);
+    // console.log(idCart, idProduct);
     try {
       const response = await this.model.findOne({ _id: idCart });
       const respuesta = response.productos.find(
