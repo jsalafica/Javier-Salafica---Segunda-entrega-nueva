@@ -14,10 +14,10 @@ router
   // .put(cartController.updateCartById)
   .delete(cartController.deleteCartById);
 
-router.route("/:id/productos").post(cartController.addProdToCart);
+router.route("/:id/product").post(cartController.addProdToCart);
 
 router
-  .route("/:id/producto/:idProd")
+  .route("/:id/product/:idProd")
   .get(cartController.getOneProduct)
   .delete(cartController.removeProdFromCart)
   .put(cartController.updateProdFromCart);

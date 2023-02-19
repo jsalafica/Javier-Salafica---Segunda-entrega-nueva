@@ -67,7 +67,7 @@ const deleteCartById = async (req, res) => {
 const addProdToCart = async (req, res) => {
   try {
     const { id } = req.params;
-    const add = await Cart.addOne(id, req.body);
+    const response = await Cart.addOne(id, req.body);
     if (!response) return res.status(404).send("Producto no encontrado.");
     res.json(`Product added successfully to cart ${id}`);
   } catch (err) {
