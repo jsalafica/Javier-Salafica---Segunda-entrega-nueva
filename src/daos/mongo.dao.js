@@ -67,12 +67,10 @@ export class MongoDao {
   }
 
   async removeOne(idCart, idProduct) {
-    // console.log(idCart, idProduct);
     try {
       const response = await this.model.findByIdAndUpdate(idCart, {
         $pull: { productos: { _id: { $in: [idProduct] } } },
       });
-      // console.log(response);
       return response;
     } catch (err) {
       throw new Error("Error getting resources");
@@ -80,7 +78,7 @@ export class MongoDao {
   }
 
   async updateOne(idCart, idProduct, resource) {
-    // console.log(idCart, idProduct);
+    // En el post enviar el _id del producto sino se cambia automaticamente
     try {
       const response = await this.model.findOneAndUpdate(
         { _id: idCart, "productos._id": idProduct },
@@ -97,13 +95,11 @@ export class MongoDao {
   }
 
   async getOne(idCart, idProduct) {
-    // console.log(idCart, idProduct);
     try {
       const response = await this.model.findOne({ _id: idCart });
       const respuesta = response.productos.find(
         (product) => product._id == idProduct
       );
-      // console.log(respuesta);
       return respuesta;
     } catch (err) {
       throw new Error("Error getting resources");
